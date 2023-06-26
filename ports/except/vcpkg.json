@@ -2,5 +2,11 @@
 	"name": "except",
 	"version": "0.1.0",
 	"description": "An exception library for C++",
-	"homepage": "https://github.com/crillab/except"
+	"homepage": "https://github.com/crillab/except",
+    "dependencies": [
+        {
+          "name": "vcpkg-cmake",
+          "host": true
+        }
+    ]    
 }
