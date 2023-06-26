@@ -34,23 +34,14 @@
 #  vcpkg_from_gitlab
 #  vcpkg_from_bitbucket
 #  vcpkg_from_sourceforge
-vcpkg_download_distfile(ARCHIVE
-    URLS "https://github.com/crillab/except/archive/refs/tags/v0.1.0.zip"
-    FILENAME "v0.1.0.zip"
+vcpkg_from_github(
+    OUT_SOURCE_PATH SOURCE_PATH
+    REPO crillab/except
+    REF v0.1.0
     SHA512 9bd879a90ec657c5851ff2d22343f5d7d6e4eacc47efe22d34b504d5b93b7911423e4d9b83deed220f856bbbbc84bc3e13429845688912c81dcf531ff4525611
+    HEAD_REF main
 )
 
-vcpkg_extract_source_archive_ex(
-    OUT_SOURCE_PATH SOURCE_PATH
-    ARCHIVE "${ARCHIVE}"
-    # (Optional) A friendly name to use instead of the filename of the archive (e.g.: a version number or tag).
-    # REF 1.0.0
-    # (Optional) Read the docs for how to generate patches at:
-    # https://github.com/Microsoft/vcpkg/blob/master/docs/examples/patching.md
-    # PATCHES
-    #   001_port_fixes.patch
-    #   002_more_port_fixes.patch
-)
 
 # # Check if one or more features are a part of a package installation.
 # # See /docs/maintainers/vcpkg_check_features.md for more details
