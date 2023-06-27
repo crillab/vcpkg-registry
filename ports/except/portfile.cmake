@@ -54,6 +54,7 @@ vcpkg_from_github(
 
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}/"
+    OPTIONS -DEXCEPT_CMAKE_DIR=share/except
     # OPTIONS -DUSE_THIS_IN_ALL_BUILDS=1 -DUSE_THIS_TOO=2
     # OPTIONS_RELEASE -DOPTIMIZE=1
     # OPTIONS_DEBUG -DDEBUGGABLE=1
@@ -68,7 +69,7 @@ vcpkg_cmake_install()
 #    "name": "vcpkg-cmake-config",
 #    "host": true
 #}
-vcpkg_cmake_config_fixup()
+#vcpkg_cmake_config_fixup()
 
 # Uncomment the line below if necessary to install the license file for the port
 # as a file named `copyright` to the directory `${CURRENT_PACKAGES_DIR}/share/${PORT}`
