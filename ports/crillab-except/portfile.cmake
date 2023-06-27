@@ -1,79 +1,44 @@
-# Common Ambient Variables:
-#   CURRENT_BUILDTREES_DIR    = ${VCPKG_ROOT_DIR}\buildtrees\${PORT}
-#   CURRENT_PACKAGES_DIR      = ${VCPKG_ROOT_DIR}\packages\${PORT}_${TARGET_TRIPLET}
-#   CURRENT_PORT_DIR          = ${VCPKG_ROOT_DIR}\ports\${PORT}
-#   CURRENT_INSTALLED_DIR     = ${VCPKG_ROOT_DIR}\installed\${TRIPLET}
-#   DOWNLOADS                 = ${VCPKG_ROOT_DIR}\downloads
-#   PORT                      = current port name (zlib, etc)
-#   TARGET_TRIPLET            = current triplet (x86-windows, x64-windows-static, etc)
-#   VCPKG_CRT_LINKAGE         = C runtime linkage type (static, dynamic)
-#   VCPKG_LIBRARY_LINKAGE     = target library linkage type (static, dynamic)
-#   VCPKG_ROOT_DIR            = <C:\path\to\current\vcpkg>
-#   VCPKG_TARGET_ARCHITECTURE = target architecture (x64, x86, arm)
-#   VCPKG_TOOLCHAIN           = ON OFF
-#   TRIPLET_SYSTEM_ARCH       = arm x86 x64
-#   BUILD_ARCH                = "Win32" "x64" "ARM"
-#   DEBUG_CONFIG              = "Debug Static" "Debug Dll"
-#   RELEASE_CONFIG            = "Release Static"" "Release DLL"
-#   VCPKG_TARGET_IS_WINDOWS
-#   VCPKG_TARGET_IS_UWP
-#   VCPKG_TARGET_IS_LINUX
-#   VCPKG_TARGET_IS_OSX
-#   VCPKG_TARGET_IS_FREEBSD
-#   VCPKG_TARGET_IS_ANDROID
-#   VCPKG_TARGET_IS_MINGW
-#   VCPKG_TARGET_EXECUTABLE_SUFFIX
-#   VCPKG_TARGET_STATIC_LIBRARY_SUFFIX
-#   VCPKG_TARGET_SHARED_LIBRARY_SUFFIX
-#
-# 	See additional helpful variables in /docs/maintainers/vcpkg_common_definitions.md
-
-# Also consider vcpkg_from_* functions if you can; the generated code here is for any web accessable
-# source archive.
-#  vcpkg_from_github
-#  vcpkg_from_gitlab
-#  vcpkg_from_bitbucket
-#  vcpkg_from_sourceforge
+# Please see
+# https://vcpkg.readthedocs.io/en/latest/maintainers/vcpkg_from_github/ for
+# details on how to fill out the arguments
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO crillab/except
     REF v0.1.0
-    SHA512 bb00f8d13b542060f5cd50d998059226c7b35a40676aa151e5b92c1753da8988c71c8128303cebbda4b2aa03a168b2e700a37d254d2fce2f452af48273db5924
+    SHA512 0
     HEAD_REF main
 )
 
-
-# # Check if one or more features are a part of a package installation.
-# # See /docs/maintainers/vcpkg_check_features.md for more details
-# vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
-#   FEATURES # <- Keyword FEATURES is required because INVERTED_FEATURES are being used
-#     tbb   WITH_TBB
-#   INVERTED_FEATURES
-#     tbb   ROCKSDB_IGNORE_PACKAGE_TBB
-# )
+# Set this variable to the name this project installs itself as, i.e. the name
+# that you can use in a find_package(<name> REQUIRED) command call
+set(name crillab-except)
 
 vcpkg_cmake_configure(
-    SOURCE_PATH "${SOURCE_PATH}/"
-    OPTIONS -Dcrillab-except_INSTALL_CMAKEDIR=share/crillab-except
-    # OPTIONS -DUSE_THIS_IN_ALL_BUILDS=1 -DUSE_THIS_TOO=2
-    # OPTIONS_RELEASE -DOPTIMIZE=1
-    # OPTIONS_DEBUG -DDEBUGGABLE=1
+    SOURCE_PATH "${SOURCE_PATH}"
+    OPTIONS
+    # vcpkg wants CMake package config files in share, so if the project allows
+    # changing the path, then we can do that here
+    #
+    # This option is based on the one provided by cmake-init, for other
+    # projects not following best practices, please refer to their
+    # documentation or their CMake scripts, or in a worst-case scenario, you
+    # have to patch around the project's deficiencies
+    "-D${name}_INSTALL_CMAKEDIR=share/${name}"
 )
 
 vcpkg_cmake_install()
 
-# # Moves all .cmake files from /debug/share/except/ to /share/except/
-# # See /docs/maintainers/ports/vcpkg-cmake-config/vcpkg_cmake_config_fixup.md for more details
-# When you uncomment "vcpkg_cmake_config_fixup()", you need to add the following to "dependencies" vcpkg.json:
-#{
-#    "name": "vcpkg-cmake-config",
-#    "host": true
-#}
-#vcpkg_cmake_config_fixup()
+# If the port's name and the CMake package's name are different, then we can
+# pass the package name here, otherwise no arguments are necessary
+vcpkg_cmake_config_fixup(PACKAGE_NAME "${name}")
 
-# Uncomment the line below if necessary to install the license file for the port
-# as a file named `copyright` to the directory `${CURRENT_PACKAGES_DIR}/share/${PORT}`
-
+# Remove files that aren't just the build artifacts and empty folders
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
+file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/share")
 
-vcpkg_install_copyright(FILE_LIST "${SOURCE_PATH}/LICENSE.md")
+# vcpkg requires a license file to be installed as well
+configure_file(
+    "${SOURCE_PATH}/LICENSE.md"
+    "${CURRENT_PACKAGES_DIR}/share/${PORT}/copyright"
+    COPYONLY
+)
