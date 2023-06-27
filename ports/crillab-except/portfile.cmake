@@ -5,7 +5,7 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO crillab/except
     REF v0.1.0
-    SHA512 0
+    SHA512 d13ba935ee053b60c960aca6d28458eb08dfe06c4e462df0bb6a964e36317f43931fc0349da59b6ca7346ab748d41d537e88cf68c8bf4675d100ec1704ebe5fd
     HEAD_REF main
 )
 
