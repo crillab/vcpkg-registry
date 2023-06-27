@@ -54,7 +54,7 @@ vcpkg_from_github(
 
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}/"
-    OPTIONS -Dcrillab-except_DIR=share/crillab-except
+    OPTIONS -Dcrillab-except_INSTALL_CMAKEDIR=share/crillab-except
     # OPTIONS -DUSE_THIS_IN_ALL_BUILDS=1 -DUSE_THIS_TOO=2
     # OPTIONS_RELEASE -DOPTIMIZE=1
     # OPTIONS_DEBUG -DDEBUGGABLE=1
