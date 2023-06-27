@@ -52,10 +52,8 @@ vcpkg_from_github(
 #     tbb   ROCKSDB_IGNORE_PACKAGE_TBB
 # )
 
-file(GLOB_RECURSE SOURCES ${SOURCE_PATH}/except/**.cpp ${SOURCE_PATH}/except/**.hpp)
-
 vcpkg_cmake_configure(
-    SOURCE_PATH "${SOURCES}"
+    SOURCE_PATH "${SOURCE_PATH}/except/"
     # OPTIONS -DUSE_THIS_IN_ALL_BUILDS=1 -DUSE_THIS_TOO=2
     # OPTIONS_RELEASE -DOPTIMIZE=1
     # OPTIONS_DEBUG -DDEBUGGABLE=1
