@@ -68,7 +68,7 @@ vcpkg_cmake_install()
 #    "name": "vcpkg-cmake-config",
 #    "host": true
 #}
-# vcpkg_cmake_config_fixup()
+vcpkg_cmake_config_fixup()
 
 # Uncomment the line below if necessary to install the license file for the port
 # as a file named `copyright` to the directory `${CURRENT_PACKAGES_DIR}/share/${PORT}`
