@@ -30,7 +30,7 @@ vcpkg_cmake_install()
 
 # If the port's name and the CMake package's name are different, then we can
 # pass the package name here, otherwise no arguments are necessary
-vcpkg_cmake_config_fixup(PACKAGE_NAME "${name}")
+# vcpkg_cmake_config_fixup(PACKAGE_NAME "${name}")
 
 # Remove files that aren't just the build artifacts and empty folders
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
