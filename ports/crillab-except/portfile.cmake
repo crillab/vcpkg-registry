@@ -5,7 +5,7 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO crillab/except
     REF v0.1.0
-    SHA512 1e16923d997d335eeaf82e45a0bed0f1a5d1451159d977852cb8061c5142f61a14bd195e287fee8ad16bb5827c771a539b0e5c88bd3eabdd054eb8ea7e225811
+    SHA512 386ca95577d861d51537f38b43643b26f3febd5f2d91744626f084c55afcd79c28ca2e3b07bdde5be7fef7dfafc3565f990006e49521c0408df80e7f8c86a014
     HEAD_REF main
 )
 
@@ -23,7 +23,7 @@ vcpkg_cmake_configure(
     # projects not following best practices, please refer to their
     # documentation or their CMake scripts, or in a worst-case scenario, you
     # have to patch around the project's deficiencies
-    #"-D${name}_INSTALL_CMAKEDIR=share/${name}"
+    "-D${name}_INSTALL_CMAKEDIR=lib/share/${name}"
 )
 
 vcpkg_cmake_install()
