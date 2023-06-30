@@ -32,6 +32,9 @@ vcpkg_cmake_install()
 # pass the package name here, otherwise no arguments are necessary
 # vcpkg_cmake_config_fixup(PACKAGE_NAME "${name}")
 
+vcpkg_cmake_config_fixup(CONFIG_PATH ${SOURCE_PATH}/cmake/${PORT})
+
+
 # Remove files that aren't just the build artifacts and empty folders
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/share")
