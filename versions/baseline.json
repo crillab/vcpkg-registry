@@ -1,8 +1,1 @@
-{
-    "default":{
-        "crillab-except":{
-            "baseline":"0.1.0",
-            "port-version":0
-        }
-    }
-}
+{"default": {"crillab-except": {"baseline": "0.1.0", "port-version": 0}, "crillab-easyjni": {"baseline": "0.1.0", "port-version": 0}}}
