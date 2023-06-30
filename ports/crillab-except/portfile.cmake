@@ -23,7 +23,7 @@ vcpkg_cmake_configure(
     # projects not following best practices, please refer to their
     # documentation or their CMake scripts, or in a worst-case scenario, you
     # have to patch around the project's deficiencies
-    "-D${name}_INSTALL_CMAKEDIR=lib/share/${name}"
+    #"-D${name}_INSTALL_CMAKEDIR=lib/share/${name}"
 )
 
 vcpkg_cmake_install()
