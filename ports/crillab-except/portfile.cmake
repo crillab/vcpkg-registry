@@ -5,7 +5,7 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO crillab/except
     REF v0.1.0
-    SHA512 d13ba935ee053b60c960aca6d28458eb08dfe06c4e462df0bb6a964e36317f43931fc0349da59b6ca7346ab748d41d537e88cf68c8bf4675d100ec1704ebe5fd
+    SHA512 a578ff7cc91d1d7a03f57d25802f81fd3c2161a6f92ac6211feee0939a122442598b1f5689fa28d5de91bb436d84be1d4724c5da51fcc632ced1759d46c81d5e
     HEAD_REF main
 )
 
@@ -32,7 +32,7 @@ vcpkg_cmake_install()
 # pass the package name here, otherwise no arguments are necessary
 # vcpkg_cmake_config_fixup(PACKAGE_NAME "${name}")
 
-vcpkg_cmake_config_fixup(CONFIG_PATH cmake)
+#vcpkg_cmake_config_fixup(CONFIG_PATH cmake)
 
 
 # Remove files that aren't just the build artifacts and empty folders
