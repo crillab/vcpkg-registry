@@ -4,8 +4,8 @@
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO crillab/easyjni
-REF v0.1.0
-SHA512 da2c85b5b518155117a12f4f87db303b687bd66a6bfec8eb5cf76207df7abd77cc4aabf7cb5ccd87c60d3caedb371c33cc39f3760d1805de48c92a72d5b188a1
+REF v0.1.1
+SHA512 8aa6a08d1ae5cb22db9d628937a166baf9aba66f83e82f13df6f56b4b3edb1aa2ad7833219c39259d52ccafdb23b99ccd58de04c7e0f883d78f2f81d4f09157e
     HEAD_REF main
 )
 
