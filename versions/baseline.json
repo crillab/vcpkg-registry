@@ -1,1 +1,1 @@
-{"default": {"crillab-except": {"baseline": "0.1.0", "port-version": 0}, "crillab-easyjni": {"baseline": "0.1.0", "port-version": 0}}}
+{"default": {"xcsp3-cpp-parser": {"baseline": "1.5.0", "port-version": 0}, "crillab-except": {"baseline": "0.1.0", "port-version": 0}, "crillab-easyjni": {"baseline": "0.1.0", "port-version": 0}}}
