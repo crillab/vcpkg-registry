@@ -1,0 +1,32 @@
+diff --git a/include/XCSP3CoreParser.h b/include/XCSP3CoreParser.h
+index eac6cda..98e4e8a 100644
+--- a/include/XCSP3CoreParser.h
++++ b/include/XCSP3CoreParser.h
+@@ -58,11 +58,19 @@ namespace XCSP3Core {
+ 
+ 
+         int parse(istream &in);
++        int parse(FILE* in);
++
++        inline bool isOptimization(){
++            return this->cspParser.manager->getInstanceType()==InstanceType::COP;
++        }
+ 
+ 
+         int parse(const char *filename);
+ 
+ 
++
++
++
+     protected:
+ 
+ 
+@@ -86,6 +94,7 @@ namespace XCSP3Core {
+         static void startElement(void *parser, const xmlChar *name, const xmlChar **attr);
+ 
+         static void endElement(void *parser, const xmlChar *name);
++
+     };
+ 
+ }

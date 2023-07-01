@@ -1,0 +1,32 @@
+diff --git a/include/XCSP3Manager.h b/include/XCSP3Manager.h
+index 4567334..0f30e81 100644
+--- a/include/XCSP3Manager.h
++++ b/include/XCSP3Manager.h
+@@ -55,6 +55,7 @@ namespace XCSP3Core {
+ 
+     private :
+         std::vector<XCSP3Core::PrimitivePattern*> patterns;
++        InstanceType instanceType;
+         bool recognizePrimitives(std::string id, Tree *tree);
+         void createPrimitivePatterns();
+         void destroyPrimitivePatterns();
+@@ -63,14 +64,18 @@ namespace XCSP3Core {
+ 
+     public :
+         // XCSP3CoreCallbacks *c, std::map<std::string, XEntity *> &m, bool
+-        XCSP3Manager(XCSP3CoreCallbacks *c, std::map<std::string, XEntity *> &m, bool = true) : callback(c), mapping(m), blockClasses("") { }
++        XCSP3Manager(XCSP3CoreCallbacks *c, std::map<std::string, XEntity *> &m, bool = true) : callback(c), mapping(m), blockClasses(""),instanceType(InstanceType::CSP) { }
+ 
+ 
+         void beginInstance(InstanceType type) {
++            this->instanceType=type;
+             callback->_arguments = nullptr;
+             callback->beginInstance(type);
+         }
+ 
++        inline InstanceType getInstanceType(){
++            return this->instanceType;
++        }
+ 
+         void endInstance() {
+             callback->endInstance();

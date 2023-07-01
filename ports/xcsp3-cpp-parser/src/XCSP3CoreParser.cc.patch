@@ -1,0 +1,60 @@
+diff --git a/src/XCSP3CoreParser.cc b/src/XCSP3CoreParser.cc
+index 446327c..a57e861 100644
+--- a/src/XCSP3CoreParser.cc
++++ b/src/XCSP3CoreParser.cc
+@@ -101,6 +101,50 @@ int XCSP3CoreParser::parse(istream &in) {
+     return 0;
+ }
+ 
++int XCSP3CoreParser::parse(FILE *in) {
++    errno = 0;
++    const char *filename = NULL;
++    xmlSAXHandler handler;
++    xmlParserCtxtPtr parserCtxt = nullptr;
++
++    const int bufSize = 4096;
++    std::unique_ptr<char[]> buffer { new char[bufSize] };
++
++    size_t size=0;
++
++    xmlSAXVersion(&handler, 1); // use SAX1 for now ???
++
++    handler.startDocument = startDocument;
++    handler.endDocument = endDocument;
++    handler.characters = characters;
++    handler.startElement = startElement;
++    handler.endElement = endElement;
++    handler.comment = comment;
++
++
++    xmlSubstituteEntitiesDefault(1);
++    size = fread(buffer.get(),sizeof(char),bufSize,in);
++
++    if(size > 0) {
++        parserCtxt = xmlCreatePushParserCtxt(&handler, &cspParser, buffer.get(), size, filename);
++
++        while(errno==0 && feof(in)==0 && ferror(in)==0 ) {
++            size = fread(buffer.get(),sizeof(char),bufSize,in);
++
++            if(size > 0)
++                xmlParseChunk(parserCtxt, buffer.get(), size, 0);
++        }
++
++        xmlParseChunk(parserCtxt, buffer.get(), 0, 1);
++
++        xmlFreeParserCtxt(parserCtxt);
++
++        xmlCleanupParser();
++    }
++
++    return 0;
++}
++
+ 
+ // void *parser, const xmlChar *value
+ void XCSP3CoreParser::comment(void *, const xmlChar *) { }
+@@ -151,4 +195,3 @@ void XCSP3CoreParser::endElement(void *parser, const xmlChar *name) {
+ }
+ 
+ 
+-
