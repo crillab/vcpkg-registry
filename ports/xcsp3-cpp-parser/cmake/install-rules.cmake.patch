@@ -1,6 +1,6 @@
 diff --git a/cmake/install-rules.cmake b/cmake/install-rules.cmake
 new file mode 100644
-index 0000000..456640e
+index 0000000..7950bcc
 --- /dev/null
 +++ b/cmake/install-rules.cmake
 @@ -0,0 +1,77 @@
@@ -47,12 +47,12 @@ index 0000000..456640e
 +if (VCPKG_TARGET_TRIPLET)
 +# Allow package maintainers to freely override the path for the configs
 +set(
-+    xcsp3-cpp-parser_INSTALL_CMAKEDIR "${CMAKE_INSTALL_PREFIX}/share/${package}"
++    xcsp3parser_INSTALL_CMAKEDIR "${CMAKE_INSTALL_PREFIX}/share/${package}"
 +    CACHE PATH "CMake package config location relative to the install prefix"
 +)
 +else ()
 +set(
-+    xcsp3-cpp-parser_INSTALL_CMAKEDIR "${CMAKE_INSTALL_LIBDIR}/cmake/${package}"
++    xcsp3parser_INSTALL_CMAKEDIR "${CMAKE_INSTALL_LIBDIR}/cmake/${package}"
 +    CACHE PATH "CMake package config location relative to the install prefix"
 +)
 +endif ()

@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 5226c37..4b0fbf0 100644
+index 5226c37..ccfae9f 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1,24 +1,31 @@
@@ -42,7 +42,7 @@ index 5226c37..4b0fbf0 100644
  
  set(LIBRARY_NAME xcsp3parser)
  set(LIBRARY_NAME_DYNAMIC xcsp3parser_dynamic)
-@@ -59,24 +66,70 @@ set(APP_SOURCES
+@@ -59,24 +66,69 @@ set(APP_SOURCES
          samples/main.cc
          include/XCSP3TreeNode.h)
  
@@ -61,8 +61,12 @@ index 5226c37..4b0fbf0 100644
 +        add_library(xcsp3-cpp-parser_xcsp3-cpp-parser ALIAS ${LIBRARY_NAME})
 +        add_library(xcsp3-cpp-parser::xcsp3-cpp-parser ALIAS ${LIBRARY_NAME})
  target_link_libraries(${LIBRARY_NAME} ${LIBXML2_LIBRARIES})
-+set_target_properties(LibXml2::LibXml2 PROPERTIES INTERFACE_COMPILE_DEFINITIONS LIBXML_STATIC)
-+
+ 
+-set_target_properties(${LIBRARY_NAME} PROPERTIES
+-        VERSION ${VERSION}
+-        FRAMEWORK FALSE
+-        PUBLIC_HEADER "${LIB_HEADERS}" # specify the public headers
+-        )
 +if(NOT BUILD_SHARED_LIBS)
 +  target_compile_definitions(${LIBRARY_NAME} PUBLIC XCSP3_CPP_PARSER_STATIC_DEFINE)
 +endif()
@@ -78,12 +82,7 @@ index 5226c37..4b0fbf0 100644
 +    FRAMEWORK FALSE
 +    PUBLIC_HEADER "${LIB_HEADERS}" # specify the public headers
 +)
- 
--set_target_properties(${LIBRARY_NAME} PROPERTIES
--        VERSION ${VERSION}
--        FRAMEWORK FALSE
--        PUBLIC_HEADER "${LIB_HEADERS}" # specify the public headers
--        )
++
 +target_include_directories(
 +    ${LIBRARY_NAME} ${warning_guard}
 +    PUBLIC

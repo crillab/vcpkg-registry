@@ -23,7 +23,11 @@ vcpkg_from_github(
         cmake/install-config.cmake.patch
         cmake/coverage.cmake.patch
         CMakePresets.json.patch
+        include/XCSP3Manager.h.patch
+        include/XCSP3TreeNode.h.patch
+        include/XCSP3CoreParser.h.patch
         CMakeLists.txt.patch
+        src/XCSP3CoreParser.cc.patch
 )
 
 # Set this variable to the name this project installs itself as, i.e. the name
