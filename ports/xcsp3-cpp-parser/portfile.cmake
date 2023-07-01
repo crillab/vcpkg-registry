@@ -22,8 +22,6 @@ vcpkg_from_github(
         cmake/prelude.cmake.patch
         cmake/install-config.cmake.patch
         cmake/coverage.cmake.patch
-        samples/main.cc.patch
-        samples/XCSP3PrintCallbacks.h.patch
         CMakePresets.json.patch
         CMakeLists.txt.patch
 )
