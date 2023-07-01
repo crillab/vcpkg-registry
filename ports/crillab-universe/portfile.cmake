@@ -11,7 +11,7 @@ vcpkg_from_github(
 
 # Set this variable to the name this project installs itself as, i.e. the name
 # that you can use in a find_package(<name> REQUIRED) command call
-set(name crillab-except)
+set(name crillab-universe)
 
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
