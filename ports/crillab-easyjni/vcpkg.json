@@ -1,1 +1,1 @@
-{"name": "crillab-easyjni", "version-semver": "0.1.0", "description": "Invoking Java code from C++ made easy.", "homepage": "https://github.com/crillab/easyjni", "dependencies": [{"name": "vcpkg-cmake", "host": true}, {"name": "vcpkg-cmake-config", "host": true}]}
+{"name": "crillab-easyjni", "version-semver": "0.1.1", "description": "Invoking Java code from C++ made easy.", "homepage": "https://github.com/crillab/easyjni", "dependencies": [{"name": "vcpkg-cmake", "host": true}, {"name": "vcpkg-cmake-config", "host": true}]}
