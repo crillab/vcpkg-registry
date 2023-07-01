@@ -1,0 +1,21 @@
+{
+  "name": "xcsp3-cpp-parser",
+  "version-semver": "1.5.0",
+  "decription": "C/C++ parser for the CSP XML format version 3.0",
+  "homepage": "https://github.com/xcsp3team/XCSP3-CPP-Parser",
+  "dependencies": [
+      {
+        "name": "libxml2",
+        "host": true
+      },
+      {
+        "name": "vcpkg-cmake",
+        "host": true
+      },
+      {
+        "name": "vcpkg-cmake-config",
+        "host": true
+      }
+  ],    
+  "builtin-baseline": "8daf70c56ba9581f5251a5d4675eb771b6b34957"
+}
