@@ -1,0 +1,16 @@
+diff --git a/cmake/prelude.cmake b/cmake/prelude.cmake
+new file mode 100644
+index 0000000..c37d590
+--- /dev/null
++++ b/cmake/prelude.cmake
+@@ -0,0 +1,10 @@
++# ---- In-source guard ----
++
++if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
++  message(
++      FATAL_ERROR
++      "In-source builds are not supported. "
++      "Please read the BUILDING document before trying to build this project. "
++      "You may need to delete 'CMakeCache.txt' and 'CMakeFiles/' first."
++  )
++endif()

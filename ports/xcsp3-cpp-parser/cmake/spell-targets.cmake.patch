@@ -1,0 +1,28 @@
+diff --git a/cmake/spell-targets.cmake b/cmake/spell-targets.cmake
+new file mode 100644
+index 0000000..0c21cab
+--- /dev/null
++++ b/cmake/spell-targets.cmake
+@@ -0,0 +1,22 @@
++set(SPELL_COMMAND codespell CACHE STRING "Spell checker to use")
++
++add_custom_target(
++    spell-check
++    COMMAND "${CMAKE_COMMAND}"
++    -D "SPELL_COMMAND=${SPELL_COMMAND}"
++    -P "${PROJECT_SOURCE_DIR}/cmake/spell.cmake"
++    WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
++    COMMENT "Checking spelling"
++    VERBATIM
++)
++
++add_custom_target(
++    spell-fix
++    COMMAND "${CMAKE_COMMAND}"
++    -D "SPELL_COMMAND=${SPELL_COMMAND}"
++    -D FIX=YES
++    -P "${PROJECT_SOURCE_DIR}/cmake/spell.cmake"
++    WORKING_DIRECTORY "${PROJECT_SOURCE_DIR}"
++    COMMENT "Fixing spelling errors"
++    VERBATIM
++)
