@@ -1,9 +1,9 @@
 diff --git a/cmake/install-config.cmake b/cmake/install-config.cmake
 new file mode 100644
-index 0000000..3ccb92a
+index 0000000..acf1163
 --- /dev/null
 +++ b/cmake/install-config.cmake
-@@ -0,0 +1,4 @@
+@@ -0,0 +1,3 @@
 +include(CMakeFindDependencyMacro)
 +
 +include("${CMAKE_CURRENT_LIST_DIR}/xcsp3-cpp-parserTargets.cmake")
