@@ -1,9 +1,9 @@
 diff --git a/cmake/install-rules.cmake b/cmake/install-rules.cmake
 new file mode 100644
-index 0000000..aa3c3fc
+index 0000000..af59361
 --- /dev/null
 +++ b/cmake/install-rules.cmake
-@@ -0,0 +1,78 @@
+@@ -0,0 +1,87 @@
 +if(PROJECT_IS_TOP_LEVEL)
 +  set(
 +      CMAKE_INSTALL_INCLUDEDIR "include/xcsp3-cpp-parser-${PROJECT_VERSION}"
@@ -50,14 +50,23 @@ index 0000000..aa3c3fc
 +    xcsp3parser_INSTALL_CMAKEDIR "${CMAKE_INSTALL_PREFIX}/share/${package}"
 +    CACHE PATH "CMake package config location relative to the install prefix"
 +)
-+mark_as_advanced(xcsp3parser_INSTALL_CMAKEDIR)
-+else ()
 +set(
 +    xcsp3-cpp-parser_INSTALL_CMAKEDIR "${CMAKE_INSTALL_LIBDIR}/cmake/${package}"
 +    CACHE PATH "CMake package config location relative to the install prefix"
 +)
-+mark_as_advanced(xcsp3-cpp-parser_INSTALL_CMAKEDIR)
++else ()
++set(
++    xcsp3parser_INSTALL_CMAKEDIR "${CMAKE_INSTALL_PREFIX}/share/${package}"
++    CACHE PATH "CMake package config location relative to the install prefix"
++)
++set(
++    xcsp3-cpp-parser_INSTALL_CMAKEDIR "${CMAKE_INSTALL_LIBDIR}/cmake/${package}"
++    CACHE PATH "CMake package config location relative to the install prefix"
++)
 +endif ()
++
++mark_as_advanced(xcsp3parser_INSTALL_CMAKEDIR)
++mark_as_advanced(xcsp3-cpp-parser_INSTALL_CMAKEDIR)
 +
 +install(
 +    FILES cmake/install-config.cmake
