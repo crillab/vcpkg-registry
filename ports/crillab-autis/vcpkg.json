@@ -1,0 +1,1 @@
+{"name": "crillab-autis", "version-semver": "0.1.0", "description": "A library for parsing combinatorial problems", "homepage": "https://github.com/crillab/autis", "dependencies": [ "crillab-except", "crillab-universe", "xcsp3-cpp-parser", {"name": "vcpkg-cmake", "host": true}, {"name": "vcpkg-cmake-config", "host": true}]}
