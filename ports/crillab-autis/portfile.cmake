@@ -4,7 +4,7 @@
 vcpkg_from_git(
     OUT_SOURCE_PATH SOURCE_PATH
     URL https://github.com/crillab/autis
-    REF v0.1.1
+    REF c2f22b0a3ca962423e34bf681492b6e4d3db5da8
     HEAD_REF main
 )
 
