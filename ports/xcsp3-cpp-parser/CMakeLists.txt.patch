@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 5226c37..c7409f3 100644
+index 5226c37..21aee25 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1,24 +1,31 @@
@@ -42,7 +42,7 @@ index 5226c37..c7409f3 100644
  
  set(LIBRARY_NAME xcsp3parser)
  set(LIBRARY_NAME_DYNAMIC xcsp3parser_dynamic)
-@@ -59,24 +66,75 @@ set(APP_SOURCES
+@@ -59,24 +66,66 @@ set(APP_SOURCES
          samples/main.cc
          include/XCSP3TreeNode.h)
  
@@ -75,12 +75,6 @@ index 5226c37..c7409f3 100644
 +    OUTPUT_NAME xcsp3-cpp-parser
 +    FRAMEWORK FALSE
 +    PUBLIC_HEADER "${LIB_HEADERS}" # specify the public headers
-+)
-+
-+target_include_directories(
-+    ${LIBRARY_NAME} ${warning_guard}
-+    PUBLIC
-+    "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
  )
  
 -add_library(${LIBRARY_NAME} STATIC ${LIB_SOURCES} ${LIB_HEADERS})
@@ -88,9 +82,9 @@ index 5226c37..c7409f3 100644
 -#add_library(${LIBRARY_NAME} SHARED ${LIB_SOURCES} ${LIB_HEADERS})
 -target_link_libraries(${LIBRARY_NAME} ${LIBXML2_LIBRARIES})
 +target_include_directories(
-+    ${LIBRARY_NAME} SYSTEM
++    ${LIBRARY_NAME} ${warning_guard}
 +    PUBLIC
-+    "$<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/export>"
++    "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
 +)
  
 -set_target_properties(${LIBRARY_NAME} PROPERTIES
@@ -98,27 +92,26 @@ index 5226c37..c7409f3 100644
 -        FRAMEWORK FALSE
 -        PUBLIC_HEADER "${LIB_HEADERS}" # specify the public headers
 -        )
++target_include_directories(
++    ${LIBRARY_NAME} SYSTEM
++    PUBLIC
++    "$<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/export>"
++)
++
 +include_directories(${LIBXML2_INCLUDE_DIR})
 +
 +target_compile_features(${LIBRARY_NAME} PUBLIC cxx_std_11)
-+
-+# ---- Sample Application ----
- 
- set(APPLICATION_NAME samplesXcsp3)
- add_executable(${APPLICATION_NAME} ${APP_SOURCES})
--target_link_libraries(${APPLICATION_NAME} ${LIBRARY_NAME} ${LIBXML2_LIBRARIES})
--target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-+target_link_libraries(${APPLICATION_NAME} ${LIBRARY_NAME} LibXml2::LibXml2)
-+if (WIN32)
-+target_compile_options(samplesXcsp3 PRIVATE /MT)
-+endif()
 +
 +# ---- Install rules ----
 +
 +if(NOT CMAKE_SKIP_INSTALL_RULES)
 +  include(cmake/install-rules.cmake)
 +endif()
-+
+ 
+-set(APPLICATION_NAME samplesXcsp3)
+-add_executable(${APPLICATION_NAME} ${APP_SOURCES})
+-target_link_libraries(${APPLICATION_NAME} ${LIBRARY_NAME} ${LIBXML2_LIBRARIES})
+-target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 +# ---- Developer mode ----
  
 +if(NOT xcsp3-cpp-parser_DEVELOPER_MODE)
