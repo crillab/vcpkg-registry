@@ -1,6 +1,6 @@
 {
   "name": "crillab-autis",
-  "version-semver": "0.1.1",
+  "version-semver": "0.1.2",
   "description": "A library for parsing combinatorial problems",
   "homepage": "https://github.com/crillab/autis",
   "dependencies": [
