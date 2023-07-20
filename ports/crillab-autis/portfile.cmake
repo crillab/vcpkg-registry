@@ -1,10 +1,11 @@
 # Please see
 # https://vcpkg.readthedocs.io/en/latest/maintainers/vcpkg_from_github/ for
 # details on how to fill out the arguments
-vcpkg_from_git(
+vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
-    URL https://github.com/crillab/autis
-    REF c2f22b0a3ca962423e34bf681492b6e4d3db5da8
+    REPO crillab/autis
+REF v0.1.2
+SHA512 c5c96d0138b3c2bb08f1f87d65f6618327716a4b8cc820f8693ab4cc90e18d84d724bbfeeef0f9f7bc54f4de6b648e9860af6a7f1df5da657effb9f5ce03bc05
     HEAD_REF main
 )
 
