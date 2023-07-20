@@ -4,8 +4,8 @@
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO crillab/universe
-    REF v0.1.1
-    SHA512 c29fdee84d663032a61cf829cc7ef4b8950185277df2ab57d7306e3657d49db7ba378e62ade3fba757a16fc399a0042b6168ff33bcbf749c73b13c04c4c67bb8
+    REF v0.1.2
+    SHA512 ecfcd562940fa50217a54d01034f3562f9bd1bf2f8f7c17f770b67763adcf6667d6bc0fb8f9e1693c5f154bb1cc31cf66766dcee219f6dffea407bd93e4422c7
     HEAD_REF main
 )
 

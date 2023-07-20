@@ -1,8 +1,8 @@
 {
     "name": "crillab-universe",
-    "version-semver": "0.1.1",
+    "version-semver": "0.1.2",
     "description": "Multi language unified interface for constraint solvers",
-	"homepage": "https://github.com/crillab/universe",
+	  "homepage": "https://github.com/crillab/universe",
     "dependencies": [
         "crillab-easyjni",
         {
