@@ -4,7 +4,7 @@
 vcpkg_from_git(
     OUT_SOURCE_PATH SOURCE_PATH
     URL https://github.com/kahypar/kahypar
-    REF 1.3.2
+    REF c1efa28379c3c8ddc5df2ed24f30f42567190478
     HEAD_REF main
     PATCHES
         CMakeLists.txt.patch
