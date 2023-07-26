@@ -4,16 +4,15 @@ else()
     set(STATIC "ON")
 endif()
 
-include(vcpkg_common_functions)
 find_program(GIT git)
 
 set(GIT_URL "https://github.com/kahypar/kahypar")
 set(GIT_REV "c1efa28379c3c8ddc5df2ed24f30f42567190478")
 
-if(NOT EXISTS "${DOWNLOADS}/kahypar")
+if(NOT EXISTS "${DOWNLOADS}/kahypar-${GIT_REV}")
     message(STATUS "Cloning...")
     vcpkg_execute_required_process(
-        COMMAND ${GIT} clone --recursive ${GIT_URL} ${DOWNLOADS}/kahypar
+        COMMAND ${GIT} clone --recursive ${GIT_URL} "${DOWNLOADS}/kahypar-${GIT_REV}"
         WORKING_DIRECTORY ${DOWNLOADS}
         LOGNAME clone
     )
@@ -23,8 +22,8 @@ message(STATUS "Cloning done")
 if(NOT EXISTS "${CURRENT_BUILDTREES_DIR}/src/.git")
     message(STATUS "Adding worktree")
     vcpkg_execute_required_process(
-        COMMAND ${GIT} worktree add -f --detach ${CURRENT_BUILDTREES_DIR}/src ${GIT_REV}
-        WORKING_DIRECTORY ${DOWNLOADS}/kahypar
+        COMMAND ${GIT} reset --hard ${GIT_REV}
+        WORKING_DIRECTORY kahypar-${GIT_REV}
         LOGNAME worktree
     )
 endif()
