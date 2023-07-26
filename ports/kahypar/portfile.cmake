@@ -12,7 +12,7 @@ set(GIT_REV "c1efa28379c3c8ddc5df2ed24f30f42567190478")
 if(NOT EXISTS "${DOWNLOADS}/kahypar")
     message(STATUS "Cloning...")
     vcpkg_execute_required_process(
-        COMMAND ${GIT} clone --recursive ${GIT_URL} "${DOWNLOADS}/kahypar"
+        COMMAND ${GIT} clone --bare ${GIT_URL} "${DOWNLOADS}/kahypar"
         WORKING_DIRECTORY ${DOWNLOADS}
         LOGNAME clone
     )
