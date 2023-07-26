@@ -1,12 +1,13 @@
 # Please see
 # https://vcpkg.readthedocs.io/en/latest/maintainers/vcpkg_from_github/ for
 # details on how to fill out the arguments
-vcpkg_from_github(
+vcpkg_from_git(
     OUT_SOURCE_PATH SOURCE_PATH
-    REPO kahypar/kahypar
+    REPO https://github.com/kahypar/kahypar
     REF 1.3.2
-    SHA512 470476aeb92403f856e6dc01e883e47fff73892e70d0fbc0b8734c27ee0b046cef9b242a9a452fd8e857f3cd338a32d8929d149fb1bbd56a2b14adf2c60b8474
     HEAD_REF main
+    PATCHES
+        CMakeLists.txt.patch
 )
 
 # Set this variable to the name this project installs itself as, i.e. the name
