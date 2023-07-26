@@ -34,7 +34,7 @@ message(STATUS "Adding worktree done")
 set(name kahypar)
 
 vcpkg_cmake_configure(
-    SOURCE_PATH "${SOURCE_PATH}"
+    SOURCE_PATH ${CURRENT_BUILDTREES_DIR}/src
     OPTIONS
     # vcpkg wants CMake package config files in share, so if the project allows
     # changing the path, then we can do that here
