@@ -51,7 +51,7 @@ file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/share")
 
 # vcpkg requires a license file to be installed as well
 configure_file(
-    "${SOURCE_PATH}/LICENSE.txt"
+    "${DOWNLOADS}/kahypar/LICENSE.txt"
     "${CURRENT_PACKAGES_DIR}/share/${PORT}/copyright"
     COPYONLY
 )
