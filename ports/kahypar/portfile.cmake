@@ -1,14 +1,34 @@
-# Please see
-# https://vcpkg.readthedocs.io/en/latest/maintainers/vcpkg_from_github/ for
-# details on how to fill out the arguments
-vcpkg_from_git(
-    OUT_SOURCE_PATH SOURCE_PATH
-    URL https://github.com/kahypar/kahypar
-    REF c1efa28379c3c8ddc5df2ed24f30f42567190478
-    HEAD_REF main
-    PATCHES
-        CMakeLists.txt.patch
-)
+if(VCPKG_LIBRARY_LINKAGE STREQUAL dynamic)
+    set(STATIC "OFF")
+else()
+    set(STATIC "ON")
+endif()
+
+include(vcpkg_common_functions)
+find_program(GIT git)
+
+set(GIT_URL "https://github.com/kahypar/kahypar")
+set(GIT_REV "c1efa28379c3c8ddc5df2ed24f30f42567190478")
+
+if(NOT EXISTS "${DOWNLOADS}/kahypar")
+    message(STATUS "Cloning...")
+    vcpkg_execute_required_process(
+        COMMAND ${GIT} clone --recursive ${GIT_URL} ${DOWNLOADS}/kahypar
+        WORKING_DIRECTORY ${DOWNLOADS}
+        LOGNAME clone
+    )
+endif()
+message(STATUS "Cloning done")
+
+if(NOT EXISTS "${CURRENT_BUILDTREES_DIR}/src/.git")
+    message(STATUS "Adding worktree")
+    vcpkg_execute_required_process(
+        COMMAND ${GIT} worktree add -f --detach ${CURRENT_BUILDTREES_DIR}/src ${GIT_REV}
+        WORKING_DIRECTORY ${DOWNLOADS}/kahypar
+        LOGNAME worktree
+    )
+endif()
+message(STATUS "Adding worktree done")
 
 # Set this variable to the name this project installs itself as, i.e. the name
 # that you can use in a find_package(<name> REQUIRED) command call
