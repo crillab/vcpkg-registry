@@ -3,7 +3,7 @@
 # details on how to fill out the arguments
 vcpkg_from_git(
     OUT_SOURCE_PATH SOURCE_PATH
-    REPO https://github.com/kahypar/kahypar
+    URL https://github.com/kahypar/kahypar
     REF 1.3.2
     HEAD_REF main
     PATCHES
