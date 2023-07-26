@@ -12,29 +12,19 @@ set(GIT_REV "c1efa28379c3c8ddc5df2ed24f30f42567190478")
 if(NOT EXISTS "${DOWNLOADS}/kahypar")
     message(STATUS "Cloning...")
     vcpkg_execute_required_process(
-        COMMAND ${GIT} clone --bare ${GIT_URL} "${DOWNLOADS}/kahypar"
+        COMMAND ${GIT} clone --recurse-submodules ${GIT_URL} "${DOWNLOADS}/kahypar"
         WORKING_DIRECTORY ${DOWNLOADS}
         LOGNAME clone
     )
 endif()
 message(STATUS "Cloning done")
 
-if(NOT EXISTS "${CURRENT_BUILDTREES_DIR}/src/.git")
-    message(STATUS "Adding worktree")
-    vcpkg_execute_required_process(
-        COMMAND ${GIT} worktree add -f --detach ${CURRENT_BUILDTREES_DIR}/src ${GIT_REV}
-        WORKING_DIRECTORY "${DOWNLOADS}/kahypar"
-        LOGNAME worktree
-    )
-endif()
-message(STATUS "Adding worktree done")
-
 # Set this variable to the name this project installs itself as, i.e. the name
 # that you can use in a find_package(<name> REQUIRED) command call
 set(name kahypar)
 
 vcpkg_cmake_configure(
-    SOURCE_PATH ${CURRENT_BUILDTREES_DIR}/src
+    SOURCE_PATH "${DOWNLOADS}/kahypar"
     OPTIONS
     # vcpkg wants CMake package config files in share, so if the project allows
     # changing the path, then we can do that here
