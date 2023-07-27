@@ -1,16 +1,13 @@
 diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
-index 27f26353..de945f53 100644
+index 27f26353..099507dd 100644
 --- a/lib/CMakeLists.txt
 +++ b/lib/CMakeLists.txt
-@@ -4,9 +4,9 @@ add_library(kahypar SHARED libkahypar.cc)
+@@ -4,7 +4,7 @@ add_library(kahypar SHARED libkahypar.cc)
  target_link_libraries(kahypar ${Boost_LIBRARIES})
  
  set_target_properties(kahypar PROPERTIES
 -    PUBLIC_HEADER ../include/libkahypar.h)
 +    PUBLIC_HEADER include/libkahypar.h)
  
--target_include_directories(kahypar PRIVATE ../include)
-+target_include_directories(kahypar PRIVATE include)
- 
- configure_file(libkahypar.pc.in libkahypar.pc @ONLY)
+ target_include_directories(kahypar PRIVATE ../include)
  
