@@ -16,6 +16,9 @@ if(NOT EXISTS "${DOWNLOADS}/kahypar")
         WORKING_DIRECTORY ${DOWNLOADS}
         LOGNAME clone
     )
+    vcpkg_execute_required_process(
+        COMMAND ${GIT} apply ${CURRENT_PORT_DIR}/CMakeLists.txt.patch ${CURRENT_PORT_DIR}/cmake/variables.cmake.patch ${CURRENT_PORT_DIR}/cmake/docs-ci.cmake.patch ${CURRENT_PORT_DIR}/cmake/project-is-top-level.cmake.patch ${CURRENT_PORT_DIR}/cmake/lint-targets.cmake.patch ${CURRENT_PORT_DIR}/cmake/lint.cmake.patch ${CURRENT_PORT_DIR}/cmake/folders.cmake.patch ${CURRENT_PORT_DIR}/cmake/docs.cmake.patch ${CURRENT_PORT_DIR}/cmake/spell-targets.cmake.patch ${CURRENT_PORT_DIR}/cmake/install-rules.cmake.patch ${CURRENT_PORT_DIR}/cmake/dev-mode.cmake.patch ${CURRENT_PORT_DIR}/cmake/spell.cmake.patch ${CURRENT_PORT_DIR}/cmake/prelude.cmake.patch ${CURRENT_PORT_DIR}/cmake/install-config.cmake.patch ${CURRENT_PORT_DIR}/cmake/coverage.cmake.patch
+    )
 endif()
 message(STATUS "Cloning done")
 
