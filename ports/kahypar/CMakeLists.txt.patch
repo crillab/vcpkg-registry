@@ -1,27 +1,26 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index ec7b8d19..7d80ca4a 100644
+index 7d80ca4a..160aac5c 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1,6 +1,11 @@
- cmake_minimum_required(VERSION 3.12)
-+include(cmake/prelude.cmake)
-+
- list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
- 
-+include(cmake/project-is-top-level.cmake)
-+include(cmake/variables.cmake)
-+
- project(KaHyPar CXX C)
- set(PROJECT_VENDOR "Sebastian Schlag")
- set(PROJECT_CONTACT "kahypar@sebastianschlag.de")
-@@ -346,6 +351,10 @@ message(STATUS "CMAKE_CXX_FLAGS_RELEASE: ${CMAKE_CXX_FLAGS_RELEASE}")
+@@ -351,10 +351,6 @@ message(STATUS "CMAKE_CXX_FLAGS_RELEASE: ${CMAKE_CXX_FLAGS_RELEASE}")
  message(STATUS "CMAKE_CXX_FLAGS_DEBUG: ${CMAKE_CXX_FLAGS_DEBUG}")
  
+ 
+-if(NOT CMAKE_SKIP_INSTALL_RULES)
+-  include(cmake/install-rules.cmake)
+-endif()
+-
+ add_subdirectory(kahypar/application)
+ 
+ if(BUILD_TESTING)
+@@ -366,6 +362,10 @@ endif()
+ add_subdirectory(tools)
+ add_subdirectory(lib)
  
 +if(NOT CMAKE_SKIP_INSTALL_RULES)
 +  include(cmake/install-rules.cmake)
 +endif()
 +
- add_subdirectory(kahypar/application)
- 
- if(BUILD_TESTING)
+ if(KAHYPAR_PYTHON_INTERFACE)
+   add_subdirectory(python)
+ endif()
