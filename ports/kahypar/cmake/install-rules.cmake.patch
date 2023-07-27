@@ -1,12 +1,12 @@
 diff --git a/cmake/install-rules.cmake b/cmake/install-rules.cmake
 new file mode 100644
-index 00000000..7b340549
+index 00000000..97ce2147
 --- /dev/null
 +++ b/cmake/install-rules.cmake
-@@ -0,0 +1,58 @@
+@@ -0,0 +1,79 @@
 +if(PROJECT_IS_TOP_LEVEL)
 +  set(
-+      CMAKE_INSTALL_INCLUDEDIR "include/KaHyPar-${PROJECT_VERSION}"
++      CMAKE_INSTALL_INCLUDEDIR "include/kahypar"
 +      CACHE PATH ""
 +  )
 +endif()
@@ -23,6 +23,21 @@ index 00000000..7b340549
 +    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 +    COMPONENT kahypar_Development
 +)
++
++install(
++    TARGETS libkahypar
++    EXPORT kahyparTargets
++    RUNTIME #
++    COMPONENT kahypar_Runtime
++    LIBRARY #
++    COMPONENT kahypar_Runtime
++    NAMELINK_COMPONENT kahypar_Development
++    ARCHIVE #
++    COMPONENT kahypar_Development
++    INCLUDES #
++    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
++)
++
 +
 +write_basic_package_version_file(
 +    "${package}ConfigVersion.cmake"
@@ -58,6 +73,12 @@ index 00000000..7b340549
 +    COMPONENT kahypar_Development
 +)
 +
++install(
++    EXPORT kahyparTargets
++    NAMESPACE kahypar::
++    DESTINATION "${kahypar_INSTALL_CMAKEDIR}"
++    COMPONENT kahypar_Development
++)
 +
 +if(PROJECT_IS_TOP_LEVEL)
 +  include(CPack)
