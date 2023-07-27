@@ -1,6 +1,6 @@
 diff --git a/cmake/install-rules.cmake b/cmake/install-rules.cmake
 new file mode 100644
-index 00000000..97ce2147
+index 00000000..37b211aa
 --- /dev/null
 +++ b/cmake/install-rules.cmake
 @@ -0,0 +1,79 @@
@@ -25,7 +25,7 @@ index 00000000..97ce2147
 +)
 +
 +install(
-+    TARGETS libkahypar
++    TARGETS all
 +    EXPORT kahyparTargets
 +    RUNTIME #
 +    COMPONENT kahypar_Runtime
