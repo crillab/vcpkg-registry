@@ -1,6 +1,6 @@
 diff --git a/cmake/install-rules.cmake b/cmake/install-rules.cmake
 new file mode 100644
-index 00000000..c22be3d9
+index 00000000..0655a230
 --- /dev/null
 +++ b/cmake/install-rules.cmake
 @@ -0,0 +1,77 @@
@@ -15,25 +15,25 @@ index 00000000..c22be3d9
 +include(GNUInstallDirs)
 +
 +# find_package(<package>) call for consumers to find this project
-+set(package KaHyPar)
++set(package kahypar)
 +
 +install(
 +    DIRECTORY
 +    include/
 +    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
-+    COMPONENT KaHyPar_Development
++    COMPONENT kahypar_Development
 +)
 +
 +install(
-+    TARGETS KaHyPar
-+    EXPORT KaHyPar
++    TARGETS kahypar
++    EXPORT kahypar
 +    RUNTIME #
-+    COMPONENT KaHyPar_Runtime
++    COMPONENT kahypar_Runtime
 +    LIBRARY #
-+    COMPONENT KaHyPar_Runtime
-+    NAMELINK_COMPONENT KaHyPar_Development
++    COMPONENT kahypar_Runtime
++    NAMELINK_COMPONENT kahypar_Development
 +    ARCHIVE #
-+    COMPONENT KaHyPar_Development
++    COMPONENT kahypar_Development
 +    INCLUDES #
 +    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 +)
@@ -46,36 +46,36 @@ index 00000000..c22be3d9
 +if (VCPKG_TARGET_TRIPLET)
 +# Allow package maintainers to freely override the path for the configs
 +set(
-+    KaHyPar_INSTALL_CMAKEDIR "${CMAKE_INSTALL_PREFIX}/share/${package}"
++    kahypar_INSTALL_CMAKEDIR "${CMAKE_INSTALL_PREFIX}/share/${package}"
 +    CACHE PATH "CMake package config location relative to the install prefix"
 +)
 +else ()
 +set(
-+    KaHyPar_INSTALL_CMAKEDIR "${CMAKE_INSTALL_INCLUDEDIR}/cmake/${package}"
++    kahypar_INSTALL_CMAKEDIR "${CMAKE_INSTALL_INCLUDEDIR}/cmake/${package}"
 +    CACHE PATH "CMake package config location relative to the install prefix"
 +)
 +endif ()
 +
-+mark_as_advanced(KaHyPar_INSTALL_CMAKEDIR)
++mark_as_advanced(kahypar_INSTALL_CMAKEDIR)
 +
 +install(
 +    FILES cmake/install-config.cmake
-+    DESTINATION "${KaHyPar_INSTALL_CMAKEDIR}"
++    DESTINATION "${kahypar_INSTALL_CMAKEDIR}"
 +    RENAME "${package}Config.cmake"
-+    COMPONENT KaHyPar_Development
++    COMPONENT kahypar_Development
 +)
 +
 +install(
 +    FILES "${PROJECT_BINARY_DIR}/${package}ConfigVersion.cmake"
-+    DESTINATION "${KaHyPar_INSTALL_CMAKEDIR}"
-+    COMPONENT KaHyPar_Development
++    DESTINATION "${kahypar_INSTALL_CMAKEDIR}"
++    COMPONENT kahypar_Development
 +)
 +
 +install(
-+    EXPORT KaHyParTargets
-+    NAMESPACE KaHyPar::
-+    DESTINATION "${KaHyPar_INSTALL_CMAKEDIR}"
-+    COMPONENT KaHyPar_Development
++    EXPORT kahyparTargets
++    NAMESPACE kahypar::
++    DESTINATION "${kahypar_INSTALL_CMAKEDIR}"
++    COMPONENT kahypar_Development
 +)
 +
 +if(PROJECT_IS_TOP_LEVEL)

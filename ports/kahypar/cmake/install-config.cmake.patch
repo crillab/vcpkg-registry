@@ -1,9 +1,9 @@
 diff --git a/cmake/install-config.cmake b/cmake/install-config.cmake
 new file mode 100644
-index 00000000..ad560b67
+index 00000000..98ba5c51
 --- /dev/null
 +++ b/cmake/install-config.cmake
 @@ -0,0 +1,3 @@
 +include(CMakeFindDependencyMacro)
 +
-+include("${CMAKE_CURRENT_LIST_DIR}/KaHyParTargets.cmake")
++include("${CMAKE_CURRENT_LIST_DIR}/kahyparTargets.cmake")

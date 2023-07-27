@@ -1,6 +1,6 @@
 diff --git a/cmake/variables.cmake b/cmake/variables.cmake
 new file mode 100644
-index 00000000..7ac38193
+index 00000000..6b09ead3
 --- /dev/null
 +++ b/cmake/variables.cmake
 @@ -0,0 +1,40 @@
@@ -35,12 +35,12 @@ index 00000000..7ac38193
 +set(warning_guard "")
 +if(NOT PROJECT_IS_TOP_LEVEL)
 +  option(
-+      KaHyPar_INCLUDES_WITH_SYSTEM
-+      "Use SYSTEM modifier for KaHyPar's includes, disabling warnings"
++      kahypar_INCLUDES_WITH_SYSTEM
++      "Use SYSTEM modifier for kahypar's includes, disabling warnings"
 +      ON
 +  )
-+  mark_as_advanced(KaHyPar_INCLUDES_WITH_SYSTEM)
-+  if(KaHyPar_INCLUDES_WITH_SYSTEM)
++  mark_as_advanced(kahypar_INCLUDES_WITH_SYSTEM)
++  if(kahypar_INCLUDES_WITH_SYSTEM)
 +    set(warning_guard SYSTEM)
 +  endif()
 +endif()
