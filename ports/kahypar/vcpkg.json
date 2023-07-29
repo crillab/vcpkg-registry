@@ -4,7 +4,7 @@
     "description": "Karlsruhe Hypergraph Partitioning",
 	"homepage": "https://github.com/kahypar/kahypar",
     "dependencies": [
-        "boost-program-options",
+        "boost",
         {
           "name": "vcpkg-cmake",
           "host": true
