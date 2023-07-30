@@ -25,7 +25,7 @@ index 00000000..c4dc550a
 +)
 +
 +install(
-+    TARGETS kahypar
++    TARGETS kahypar mini_boost
 +    EXPORT kahyparTargets
 +    RUNTIME #
 +    COMPONENT kahypar_Runtime
