@@ -49,7 +49,7 @@ set(name kahypar)
 
 vcpkg_cmake_configure(
     SOURCE_PATH "${DOWNLOADS}/kahypar"
-    OPTIONS -DBUILD_TESTING=OFF
+    OPTIONS -DBUILD_TESTING=OFF -DKAHYPAR_USE_MINIMAL_BOOST=ON
     # vcpkg wants CMake package config files in share, so if the project allows
     # changing the path, then we can do that here
     #
