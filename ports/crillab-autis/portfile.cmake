@@ -5,7 +5,7 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO crillab/autis
     REF v0.1.6
-    SHA512 aae616bdc8e23e1ba28ea3cadb1e989e68a077fc8638141432e301edbb505295090d2527af4b2b499e6616f1b334612eb19d0a6f91168ae2f47d7d1e7f52f5bc
+    SHA512 b55ef3b1f4ab57b5b050a7befd3cade9ef97908264f114a8b9b934dd367cb7d6940e0a9afbcca62b93dcb7c2408c465f580884ce7bf2bb65328e6d6ab687eedd
     HEAD_REF main
 )
 
