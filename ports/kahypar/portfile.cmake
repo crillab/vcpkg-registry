@@ -20,6 +20,12 @@ endif()
 message(STATUS "Cloning done")
 
 vcpkg_execute_required_process(
+    COMMAND ${GIT} reset --hard
+    WORKING_DIRECTORY ${DOWNLOADS}/kahypar
+    LOGNAME reset
+)
+
+vcpkg_execute_required_process(
     COMMAND ${GIT} pull
     WORKING_DIRECTORY ${DOWNLOADS}/kahypar
     LOGNAME pull
